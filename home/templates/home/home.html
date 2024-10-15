@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        {% if request.user.is_authenticated %}
+            <h1>
+                hello <a href="{% url 'account:display'  request.user.id %}">{{ request.user.username }}</a>
+            </h1>
+        {% endif %}
+        <h1>
+            welcome to my site
+        </h1>
+    </header>
+    <main>
+         {% if request.user.is_anonymous %}
+            <a href="{% url 'account:register' %}">register</a>
+            <a href="{% url 'account:login' %}">login</a>
+        {% endif %}
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
